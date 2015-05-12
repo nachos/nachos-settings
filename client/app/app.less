@@ -1,0 +1,29 @@
+html, body{
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.main-wrapper{
+  height: 100vh;
+  width: 100vw;
+}
+
+@increment: 64px;
+
+
+// Overrides
+.md-subheader{
+  margin-right: 0;
+  background-color: transparent!important;
+}
+
+// injector
+@import 'main/main.less';
+@import 'shell/shell.less';
+@import 'main/toolbar/toolbar.less';
+@import 'main/view-dips/view-dips.less';
+@import 'main/view-settings/view-settings.less';
+// endinjector
