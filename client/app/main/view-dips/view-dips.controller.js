@@ -1,42 +1,56 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('ViewDipsController', function ($scope, $timeout) {
+  .controller('ViewDipsController', function ($scope, $timeout, $state) {
     var nachosApi = require('nachos-api');
     var fs = require('fs');
     var async = require('async');
     var path = require('path');
     var _ = require('lodash');
 
-    nachosApi.getAppConfig('nachos-settings', function (err, config) {
+    $scope.types = [
+      'dips',
+      'tacos'
+    ];
+
+    $scope.view = function(item) {
+      $state.go('shell.main.view-settings',{'item':item})
+    };
+
+    nachosApi.config.get('nachos', function (err, config) {
       if (err) {
-        console.log(err);
+        throw new Error(err);
       }
       else {
-        var directory = config.dips;
+        var packages = config.packages;
 
-        fs.readdir(directory, function (err, items) {
-          async.map(items, function (item, cb) {
-            var itemPath = path.join(directory, item);
-            fs.stat(itemPath, function (err, stat) {
-              if (err) {
-                return cb(null, null);
-              }
-
-              return cb(null, {
-                name: item,
-                dir: directory,
-                path: itemPath,
-                isFolder: stat.isDirectory()
-              })
+        var getPackages = function (type, cb) {
+          var json = require(path.join(packages, type, 'index.json'));
+          var items = Object.keys(json);
+          async.map(items, function (item, itemCb) {
+            nachosApi.config.dips.get(item, function (err, dipConfig) {
+              var item = {
+                name: dipConfig.config.name,
+                path: dipConfig.path,
+                config: dipConfig.config
+              };
+              itemCb(err, item);
             });
-          }, function (err, results) {
-            results = _.filter(results, function (item) {
-              return item.isFolder;
-            });
+          }, cb);
+        };
 
-            $timeout(function () {
-              $scope.dirs = results;
+        $scope.getItems = function (type) {
+          return $scope[type];
+        };
+
+        $scope.types.forEach(function (type) {
+          getPackages(type, function (err, packages) {
+            if (err) {
+              throw new Error(err);
+            }
+
+            $timeout(function(){
+              $scope[type] = packages;
             });
           });
         });

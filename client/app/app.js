@@ -5,12 +5,6 @@ angular.module('nachosSettingsApp', ['ngMaterial', 'ui.router'])
             .otherwise('/view-dips');
 
         $mdThemingProvider.theme('default')
-            .primaryPalette('light-blue')
+            .primaryPalette('blue-grey')
             .accentPalette('orange');
     });
-
-// Noam Okman is GAYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-// Contact for some fun time:
-// noamokman@gmail.com
-// 0548111255
-// ;)

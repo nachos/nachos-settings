@@ -1,7 +1,16 @@
-<ul>
-  <li ng-repeat="dir in dirs">
-    <a ui-sref="shell.main.view-settings({path: dir.path})">{{dir.name}}</a>
-  </li>
-</ul>
-
-
+<md-content class="items">
+  <div ng-repeat="type in types" ng-show="getItems(type).length">
+    <md-subheader>{{ type }}</md-subheader>
+    <div layout="row" layout-wrap layout-padding layout-align="space-between">
+      <div flex="15" ng-repeat="item in getItems(type)" class="file">
+        <md-card class="tile">
+          <md-button layout="column" layout-align="center center" flex aria-label="item"
+                     ng-click="view(item)">
+            {{item.name}}
+          </md-button>
+        </md-card>
+      </div>
+      <div flex ng-hide="items.length % 5 == 0"></div>
+    </div>
+  </div>
+</md-content>
