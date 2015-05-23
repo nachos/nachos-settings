@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('ViewDipsController', function ($scope, $timeout, $state) {
+  .controller('Packages', function ($scope, $timeout, $state) {
     var nachosApi = require('nachos-api');
     var fs = require('fs');
     var async = require('async');
@@ -14,7 +14,7 @@ angular.module('nachosSettingsApp')
     ];
 
     $scope.view = function(item) {
-      $state.go('shell.main.view-settings',{'item':item})
+      $state.go('shell.main.package-settings',{'item':item})
     };
 
     nachosApi.config.get('nachos', function (err, config) {

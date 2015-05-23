@@ -1,3 +1,9 @@
-<md-toolbar class="md-medium-tall tool-bar" layout="row" ng-controller="MainToolbarController">
-  Settings
+<md-toolbar class="md-medium-tall tool-bar" layout="column" layout-align="end"
+            ng-controller="Toolbar">
+  <div class="md-toolbar-tools">
+    <md-button ng-click="back()">
+      <i class="mdi mdi-arrow-left"></i>
+    </md-button>
+    <span>Settings</span>
+  </div>
 </md-toolbar>

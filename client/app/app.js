@@ -2,7 +2,7 @@
 angular.module('nachosSettingsApp', ['ngMaterial', 'ui.router', 'iframeWrapper'])
     .config(function ($mdThemingProvider, $urlRouterProvider) {
         $urlRouterProvider
-            .otherwise('/view-dips');
+            .otherwise('/packages');
 
         $mdThemingProvider.theme('default')
             .primaryPalette('blue-grey')

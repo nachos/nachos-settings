@@ -4,9 +4,9 @@
     <div layout="row" layout-wrap layout-padding layout-align="space-between">
       <div flex="15" ng-repeat="item in getItems(type)" class="file">
         <md-card class="tile">
-          <md-button layout="column" layout-align="center center" flex aria-label="item"
+          <md-button layout="row" layout-align="center center" flex aria-label="item"
                      ng-click="view(item)">
-            {{item.name}}
+            <span>{{item.name}}</span>
           </md-button>
         </md-card>
       </div>

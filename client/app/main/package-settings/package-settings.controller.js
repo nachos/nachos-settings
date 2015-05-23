@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('ViewSettingsController', function ($scope, $state, $stateParams) {
+  .controller('PackageSettings', function ($scope, $state, $stateParams) {
+    function back (){
+      $state.go('shell.main.packages');
+    }
+
     if(!$stateParams.item){
-      $state.go('shell.main.view');
+      back()
     }
 
     var path = require('path');
@@ -29,7 +33,10 @@ angular.module('nachosSettingsApp')
     };
 
     item.settingsPath = path.join(item.path, item.config.settings);
-// Try
+
+    if(!item.settingsPath){
+      back();
+    }
 
     $scope.item = item;
     console.log($scope.item);
