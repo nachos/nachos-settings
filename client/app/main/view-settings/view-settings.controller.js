@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('ViewSettingsController', function ($scope, $state, $stateParams, $timeout) {
+  .controller('ViewSettingsController', function ($scope, $state, $stateParams) {
     if(!$stateParams.item){
       $state.go('shell.main.view');
     }
@@ -17,8 +17,10 @@ angular.module('nachosSettingsApp')
       });
     };
 
-    api.saveSettings = function (config) {
-      //nachosApi.config
+    api.saveSettings = function (config, cb) {
+      nachosApi.config.save(item.name, config, function (err) {
+        cb(err);
+      })
     };
 
     item.content = {
