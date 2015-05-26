@@ -3,9 +3,8 @@
   <div layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
       <md-content layout="column">
-        <md-button>all packages</md-button>
-        <md-button>dips</md-button>
-        <md-button>tacos</md-button>
+        <md-button ui-sref="shell.main.packages">all packages</md-button>
+        <md-button ui-sref="shell.main.nachos-settings">nachos settings</md-button>
       </md-content>
     </md-sidenav>
     <div ui-view flex layout="column" class="files"></div>
