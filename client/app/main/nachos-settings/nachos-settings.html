@@ -3,36 +3,37 @@
     <md-content class="md-padding">
       <md-input-container>
         <label>Packages path</label>
-        <input type="text" ng-model="packages">
+        <input type="text" ng-model="config.packages">
       </md-input-container>
+      <md-button ng-click="savePackages()" class="md-primary">Save</md-button>
     </md-content>
   </md-tab>
   <md-tab label="User">
     <md-content class="md-padding" layout="column">
       <div layout="row" layout-align="center center" layout-padding>
-        <img class="user-image md-whiteframe-z1" ng-if="user" ng-src="data:image/jpeg;base64,{{user.picture}}"/>
+        <img class="user-image md-whiteframe-z1" ng-if="config.user" ng-src="data:image/jpeg;base64,{{config.user.picture}}"/>
         <div layout="column" flex>
           <md-input-container>
             <label>First name</label>
-            <input type="text" ng-model="user.firstName">
+            <input type="text" ng-model="config.user.firstName">
           </md-input-container>
           <md-input-container>
             <label>Last name</label>
-            <input type="text" ng-model="user.lastName">
+            <input type="text" ng-model="config.user.lastName">
           </md-input-container>
         </div>
       </div>
       <div>
         <md-input-container>
           <label>Email</label>
-          <input type="email" ng-model="user.email">
+          <input type="email" ng-model="config.user.email">
         </md-input-container>
       </div>
     </md-content>
   </md-tab>
   <md-tab label="Default programs">
     <md-content class="md-padding">
-      {{defaults.exts}}
+      {{config.defaults.exts}}
     </md-content>
   </md-tab>
 </md-tabs>

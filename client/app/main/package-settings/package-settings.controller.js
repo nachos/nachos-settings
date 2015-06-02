@@ -39,6 +39,5 @@ angular.module('nachosSettingsApp')
     }
 
     $scope.item = item;
-    console.log($scope.item);
   });
 
