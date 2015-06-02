@@ -22,6 +22,13 @@ angular.module('nachosSettingsApp')
       }
 
       $timeout(function () {
+        var packageTypes = Object.keys(packages);
+        packageTypes.forEach(function (type) {
+          packages[type] = _.filter(packages[type], function (pkg) {
+            return pkg.config.settings;
+          });
+        });
+
         _.merge($scope, packages);
       });
     });
