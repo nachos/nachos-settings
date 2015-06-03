@@ -16,13 +16,13 @@ angular.module('nachosSettingsApp')
     var nachosApi = require('nachos-api');
     var api = {};
     api.getSettings = function(cb) {
-      nachosApi.configs.get(item.name, function(err, config){
-        cb(err, config.global);
+      nachosApi.settings(item.name).get(function(err, config){
+        cb(err, config);
       });
     };
 
     api.saveSettings = function (config, cb) {
-      nachosApi.configs.saveGlobal(item.name, config, function (err) {
+      nachosApi.settings(item.name).save(config, function (err) {
         cb(err);
       })
     };
