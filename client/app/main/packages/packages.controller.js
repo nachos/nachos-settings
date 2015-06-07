@@ -2,10 +2,12 @@
 
 angular.module('nachosSettingsApp')
   .controller('Packages', function ($scope, $timeout, $state) {
-    var nachosApi = require('nachos-api');
+    var Packages = require('nachos-packages');
     var _ = require('lodash');
 
-    $scope.types = nachosApi.packages.types;
+    var packages = new Packages();
+
+    $scope.types = Packages.TYPES;
 
     $scope.view = function(item) {
       $state.go('shell.main.package-settings',{'item':item})
@@ -15,7 +17,7 @@ angular.module('nachosSettingsApp')
       return $scope[type];
     };
 
-    nachosApi.packages.getAll(true, function (err, packages) {
+    packages.getAll(true, function (err, packages) {
       if (err) {
         throw new Error(err);
       }
