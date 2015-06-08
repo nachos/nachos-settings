@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('nachosSettings', function ($scope, $mdToast, $state) {
-    var nachosApi = require('nachos-api');
-    var nachosSettings = nachosApi.settings('nachos');
-        nachosSettings.get(function (err, config){
+  .controller('nachosSettings', function ($scope, $mdToast) {
+    var nachosConfig = require('nachos-config')();
+
+    nachosConfig.get(function (err, config){
       $scope.config = config;
     });
 
