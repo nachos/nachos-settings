@@ -5,7 +5,11 @@
         <label>Packages path</label>
         <input type="text" ng-model="config.packages">
       </md-input-container>
-      <md-button ng-click="savePackages()" class="md-primary">Save</md-button>
+      <md-input-container>
+        <label>Server url</label>
+        <input type="text" ng-model="config.server">
+      </md-input-container>
+      <md-button ng-click="saveSettings()" class="md-primary">Save</md-button>
     </md-content>
   </md-tab>
   <md-tab label="User">

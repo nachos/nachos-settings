@@ -8,8 +8,8 @@ angular.module('nachosSettingsApp')
       $scope.config = config;
     });
 
-    $scope.savePackages = function () {
-      nachosSettings.save($scope.config, function (err) {
+    $scope.saveSettings = function () {
+      nachosConfig.save($scope.config, function (err) {
         if(err) {
           return notify(err);
         }
