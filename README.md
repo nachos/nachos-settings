@@ -1,2 +1,2 @@
-# nachos-settings
-The app that manages the nachos settings
+# settings-taco
+The taco that manages the nachos settings
