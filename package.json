@@ -1,5 +1,5 @@
 {
-  "name": "nachos-settings",
+  "name": "settings-taco",
   "version": "1.0.0",
   "description": "All dips' settings in one place",
   "main": "gulpfile.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nachos/nachos-settings.git"
+    "url": "https://github.com/nachos/settings-taco.git"
   },
   "keywords": [
     "nachos",
@@ -17,9 +17,9 @@
   "author": "Nachos team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nachos/nachos-settings/issues"
+    "url": "https://github.com/nachos/settings-taco/issues"
   },
-  "homepage": "https://github.com/nachos/nachos-settings",
+  "homepage": "https://github.com/nachos/settings-taco",
   "devDependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
@@ -41,5 +41,6 @@
     "relative-require": "git://github.com/nachos/relative-require",
     "rimraf": "^2.3.2",
     "trash": "^1.4.1"
-  }
+  },
+  "private": true
 }
