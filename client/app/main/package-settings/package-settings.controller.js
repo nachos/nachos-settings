@@ -1,17 +1,8 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('PackageSettings', function ($scope, $state, $stateParams) {
-    function back (){
-      $state.go('shell.main.packages');
-    }
-
-    if(!$stateParams.item){
-      back()
-    }
-
+  .controller('PackageSettings', function ($scope, $state, $stateParams, item) {
     var path = require('path');
-    var item = $stateParams.item;
 
     var nachosApi = require('nachos-api');
     var api = {};
@@ -27,8 +18,12 @@ angular.module('nachosSettingsApp')
       })
     };
 
+    var relative = require('require-relative');
+
     item.content = {
-      require: require('relative-require')(item.path),
+      require: function (pkg) {
+        return relative(pkg, item.path);
+      },
       nachosApi: api
     };
 

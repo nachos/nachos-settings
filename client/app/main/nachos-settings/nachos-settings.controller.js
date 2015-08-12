@@ -2,23 +2,24 @@
 
 angular.module('nachosSettingsApp')
   .controller('nachosSettings', function ($scope, $mdToast) {
-    var nachosConfig = require('nachos-config')();
+    var nachosConfig = require('nachos-config');
 
-    nachosConfig.get(function (err, config){
-      $scope.config = config;
-    });
+    nachosConfig.get()
+      .then(function (config) {
+        $scope.config = config;
+      });
 
     $scope.saveSettings = function () {
-      nachosConfig.save($scope.config, function (err) {
-        if(err) {
+      nachosConfig.save($scope.config)
+        .then(function () {
+          notify('Changes saved')
+        })
+        .catch(function (err) {
           return notify(err);
-        }
-
-        notify('Changes saved')
-      });
+        });
     };
 
-    function notify (msg) {
+    function notify(msg) {
       $mdToast.show(
         $mdToast.simple()
           .content(msg)

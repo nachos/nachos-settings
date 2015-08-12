@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var childProcess = require('child_process');
 var spawn = childProcess.spawn;
 var exec = childProcess.exec;
-var nw = require('nw');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
 var del = require('del');
@@ -15,6 +14,7 @@ var inject = require('gulp-inject');
 var less = require('gulp-less');
 var jshint = require('gulp-jshint');
 var livereload = require('gulp-livereload');
+var runElectron = require("gulp-run-electron");
 
 /** Grab-bag of build configuration. */
 var config = {};
@@ -34,22 +34,6 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('nw', function (cb) {
-    var nwProcess = spawn(nw.findpath(), ['client']);
-
-    nwProcess.on('error', cb);
-    nwProcess.on('close', function (code) {
-        if (code) {
-            cb(new Error('child process exited with code ' + code))
-        }
-
-        cb();
-
-        // Close gulp
-        process.exit(1);
-    });
-});
-
 gulp.task('serve', function (cb) {
     runSequence(
         'clean:tmp',
@@ -58,7 +42,7 @@ gulp.task('serve', function (cb) {
         'inject:js',
         'wiredep',
         'livereload',
-        ['nw',
+        ['electron',
             'watch'],
         cb);
 });
@@ -168,4 +152,9 @@ gulp.task('clean:tmp', function (cb) {
 
 gulp.task('clean:dist', function (cb) {
     del(['dist'], cb);
+});
+
+gulp.task('electron', function () {
+    return gulp.src('.')
+      .pipe(runElectron());
 });
