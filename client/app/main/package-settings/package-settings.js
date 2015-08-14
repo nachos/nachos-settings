@@ -12,7 +12,7 @@ angular.module('nachosSettingsApp')
         templateUrl: 'app/main/package-settings/package-settings.html',
         resolve: {
           item: function ($stateParams) {
-            return $stateParams.item || packages.getPackage($stateParams.package, 'dip');
+            return $stateParams.item || packages.getPackage($stateParams.package);
           }
         }
       });
