@@ -28,5 +28,4 @@ angular.module('nachosSettingsApp')
           _.merge($scope, packages);
         });
       });
-
   });

@@ -3,9 +3,10 @@
 angular.module('nachosSettingsApp')
   .controller('PackageSettings', function ($scope, $state, $stateParams, item) {
     var path = require('path');
-
     var nachosApi = require('nachos-api');
+
     var api = {};
+
     api.getSettings = function(cb) {
       nachosApi.settings(item.name).get(function(err, config){
         cb(err, config);

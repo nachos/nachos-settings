@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nachosSettingsApp')
-  .controller('nachosSettings', function ($scope, $mdToast) {
+  .controller('nachosSettings', function ($scope, notify) {
     var nachosConfig = require('nachos-config');
 
     nachosConfig.get()
@@ -19,12 +19,4 @@ angular.module('nachosSettingsApp')
         });
     };
 
-    function notify(msg) {
-      $mdToast.show(
-        $mdToast.simple()
-          .content(msg)
-          .parent('.files')
-          .position('bottom right')
-      );
-    }
   });
