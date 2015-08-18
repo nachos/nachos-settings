@@ -1,2 +1,2 @@
-# settings-taco
-The taco that manages the nachos settings
+# settings-burrito
+The burrito that manages the nachos settings

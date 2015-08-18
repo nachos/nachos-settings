@@ -3,7 +3,7 @@
 angular.module('nachosSettingsApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('shell.main', {
+      .state('main', {
         abstract: true,
         templateUrl: 'app/main/main.html'
       });

@@ -1,14 +1,14 @@
 {
-  "name": "settings-taco",
+  "name": "settings-burrito",
   "version": "1.0.0",
-  "description": "All dips' settings in one place",
+  "description": "All settings in one place",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nachos/settings-taco.git"
+    "url": "https://github.com/nachos/settings-burrito.git"
   },
   "keywords": [
     "nachos",
@@ -17,9 +17,9 @@
   "author": "Nachos team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nachos/settings-taco/issues"
+    "url": "https://github.com/nachos/settings-burrito/issues"
   },
-  "homepage": "https://github.com/nachos/settings-taco",
+  "homepage": "https://github.com/nachos/settings-burrito",
   "devDependencies": {
     "del": "^1.2.1",
     "gulp": "^3.9.0",

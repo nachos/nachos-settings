@@ -8,7 +8,7 @@ angular.module('nachosSettingsApp')
     $scope.types = packages.Packages.TYPES;
 
     $scope.view = function (item) {
-      $state.go('shell.main.package-settings', {'item': item})
+      $state.go('main.package-settings', {item: item})
     };
 
     $scope.getItems = function (type) {
